@@ -1,7 +1,24 @@
-import React from 'react'
+import Link from 'next/link'
+import React, {useEffect, useState} from 'react'
+import Pagination from '../component/Pagination'
 import Navbar from '../layout/Navbar'
+import { sanityClient, urlFor } from '../sanity'
 
-const Blog = () => {
+const Blog = ({posts}) => {
+  const recentPost = posts.filter((post,index) => index < 3)
+  // const[post,setPosts]= useState([])
+  const [currentPage,setCurrentPage]= useState(1)
+  const [postPerPage,setPostPerPage]= useState(2)
+  // useEffect(
+  //   setPosts(posts)
+  // ,[post])
+  const indexOflastPost = currentPage * postPerPage
+  const indexOfFirstPost = indexOflastPost - postPerPage
+  const currentPosts = posts.slice(indexOfFirstPost,indexOflastPost)
+
+  //change pagination
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  
   return (
 <>
 <Navbar/>
@@ -21,17 +38,20 @@ const Blog = () => {
       <div className="row">
         <div className="col-md-8">
           <div className="row">
-            <div className="col-md-12">
+            {
+              currentPosts.map(post => (
+                
+              <div key={post._id} className="col-md-12">
               <div className="item">
                 <div className="post-img">
                   <a href="post.html">
                     {" "}
-                    <img src="images/blog/1.jpg" alt="" />{" "}
+                    <img src={urlFor(post.mainImage).url()} alt="" />{" "}
                   </a>
                   <div className="date">
                     <a href="post.html">
                       {" "}
-                      <span>Apr</span> <i>14</i>{" "}
+                      <span>{new Date(post.publishedAt).toLocaleDateString('en-EN',{month: 'short'})}</span> <i>{new Date(post.publishedAt).toLocaleDateString('en-EN',{ day: 'numeric'})}</i>{" "}
                     </a>
                   </div>
                 </div>
@@ -41,123 +61,30 @@ const Blog = () => {
                       <div>Blog</div>
                     </a>
                     <div className="blog-post-categorydate-divider" />
-                    <div>Advertising</div>
+                    <div>{post.categories[0].title}</div>
                   </div>
                   <h4>
-                    <a href="post.html">Get Started With Tiktok Ads.</a>
+                    <Link href={`post/${post.slug.current}`}><a>{post.title}</a></Link>
                   </h4>
                   <p>
-                    Graphic potenti fringilla pretium ipsum non blandit. Vivamus
-                    eget nisi non mi iaculis iaculis imserie quiseros sevin
-                    elentesque habitant morbi tristique senectus et netus et
-                    malesuada fames actur sisenestion mauris suscipit mis nec
-                    esta a tincidunt eros.
+                    {post.description}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="col-md-12">
-              <div className="item">
-                <div className="post-img">
-                  <a href="post.html">
-                    {" "}
-                    <img src="images/blog/4.jpg" alt="" />{" "}
-                  </a>
-                  <div className="date">
-                    <a href="post.html">
-                      {" "}
-                      <span>Apr</span> <i>14</i>{" "}
-                    </a>
-                  </div>
-                </div>
-                <div className="post-cont">
-                  <div className="blog-post-categorydate-wrapper">
-                    <a href="blog.html">
-                      <div>Blog</div>
-                    </a>
-                    <div className="blog-post-categorydate-divider" />
-                    <div>Technology</div>
-                  </div>
-                  <h4>
-                    <a href="post.html">The Metaverse – how’s it going?</a>
-                  </h4>
-                  <p>
-                    Graphic potenti fringilla pretium ipsum non blandit. Vivamus
-                    eget nisi non mi iaculis iaculis imserie quiseros sevin
-                    elentesque habitant morbi tristique senectus et netus et
-                    malesuada fames actur sisenestion mauris suscipit mis nec
-                    esta a tincidunt eros.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="item">
-                <div className="post-img">
-                  <a href="post.html">
-                    {" "}
-                    <img src="images/blog/5.jpg" alt="" />{" "}
-                  </a>
-                  <div className="date">
-                    <a href="post.html">
-                      {" "}
-                      <span>Apr</span> <i>14</i>{" "}
-                    </a>
-                  </div>
-                </div>
-                <div className="post-cont">
-                  <div className="blog-post-categorydate-wrapper">
-                    <a href="blog.html">
-                      <div>Blog</div>
-                    </a>
-                    <div className="blog-post-categorydate-divider" />
-                    <div>UX Design</div>
-                  </div>
-                  <h4>
-                    <a href="post.html">UX in Ecommerce – 5 things to avoid.</a>
-                  </h4>
-                  <p>
-                    Graphic potenti fringilla pretium ipsum non blandit. Vivamus
-                    eget nisi non mi iaculis iaculis imserie quiseros sevin
-                    elentesque habitant morbi tristique senectus et netus et
-                    malesuada fames actur sisenestion mauris suscipit mis nec
-                    esta a tincidunt eros.
-                  </p>
-                </div>
-              </div>
-            </div>
+              ))
+            }
             <div className="col-md-12">
               {/* Pagination */}
-              <ul className="pagination-wrap align-center mb-30 mt-30">
-                <li>
-                  <a href="blog2.html#">
-                    <i className="ti-angle-left" />
-                  </a>
-                </li>
-                <li>
-                  <a href="blog2.html#">1</a>
-                </li>
-                <li>
-                  <a href="blog2.html#" className="active">
-                    2
-                  </a>
-                </li>
-                <li>
-                  <a href="blog2.html#">3</a>
-                </li>
-                <li>
-                  <a href="blog2.html#">
-                    <i className="ti-angle-right" />
-                  </a>
-                </li>
-              </ul>
+              <Pagination postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
             </div>
           </div>
         </div>
         {/* Sidebar */}
         <div className="col-md-4">
           <div className="row blog-sidebar">
-            <div className="col-md-12">
+            {/* search */}
+            {/* <div className="col-md-12">
               <div className="widget search">
                 <form>
                   <input
@@ -170,38 +97,28 @@ const Blog = () => {
                   </button>
                 </form>
               </div>
-            </div>
+            </div> */}
+            {/* Recent Posts */}
             <div className="col-md-12">
               <div className="widget">
                 <div className="widget-title">
                   <h5>Recent Posts</h5>
                 </div>
                 <ul className="recent">
-                  <li>
-                    <div className="thum">
-                      {" "}
-                      <img src="images/blog/1.jpg" alt="" />{" "}
-                    </div>{" "}
-                    <a href="post.html">Get Started With Tiktok Ads.</a>
-                  </li>
-                  <li>
-                    <div className="thum">
-                      {" "}
-                      <img src="images/blog/4.jpg" alt="" />{" "}
-                    </div>{" "}
-                    <a href="post.html">The Metaverse – how’s it going?</a>
-                  </li>
-                  <li>
-                    <div className="thum">
-                      {" "}
-                      <img src="images/blog/5.jpg" alt="" />{" "}
-                    </div>{" "}
-                    <a href="post.html">UX in Ecommerce – 5 things to avoid.</a>
-                  </li>
+              {recentPost.map((post) => (
+                <li key={post._id}>
+                <div className="thum">
+                  {" "}
+                  <img src={urlFor(post.mainImage).url()} alt="" />{" "}
+                </div>{" "}
+                <Link href={`post/${post.slug.current}`}><a>{post.title}</a></Link>
+              </li>
+              ))}
                 </ul>
               </div>
             </div>
-            <div className="col-md-12">
+            {/* Archives */}
+            {/* <div className="col-md-12">
               <div className="widget">
                 <div className="widget-title">
                   <h5>Archives</h5>
@@ -218,8 +135,9 @@ const Blog = () => {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col-md-12">
+            </div> */}
+            {/* Categories */}
+            {/* <div className="col-md-12">
               <div className="widget">
                 <div className="widget-title">
                   <h5>Categories</h5>
@@ -245,8 +163,9 @@ const Blog = () => {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col-md-12">
+            </div> */}
+            {/* Tags */}
+            {/* <div className="col-md-12">
               <div className="widget">
                 <div className="widget-title">
                   <h5>Tags</h5>
@@ -269,7 +188,7 @@ const Blog = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -281,3 +200,45 @@ const Blog = () => {
 }
 
 export default Blog
+
+export async function getStaticProps(){
+  const query = `*[_type == "post"][0...100]{
+    _id,
+    title,
+    publishedAt,
+    categories[] -> {
+      title,         
+},
+    author -> {
+      name,
+      image
+    },
+    description,
+    mainImage,
+    slug
+  }`
+
+  // const serviceQuery = `*[_type == 'service']{
+  //   _id,
+  //   description,
+  //   name,
+  //   title,
+  //   slug,
+  //   images[] -> {
+  //     title,
+  //     mainImage,
+  //     _id,
+  //   }
+  // }`
+
+  // const services = await sanityClient.fetch(serviceQuery)
+
+  const posts = await sanityClient.fetch(query)
+  // const services = data;
+  return{
+    props: {
+      posts
+      // ,services
+    }
+  }
+} 

@@ -3,7 +3,6 @@ import React from 'react'
 import {urlFor} from "../sanity"
 
 const Blog = ({posts}) => {
-  console.log(posts[0].publishedAt.match(/\d+/g)[1])
   const months = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
   return (
     <section id="blog" className="homepage-blog section-padding">

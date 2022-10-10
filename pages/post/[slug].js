@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Navbar from '../../layout/Navbar'
 import PortableText from "react-portable-text"
 import {useForm, SubmitHandler} from "react-hook-form"
@@ -19,11 +19,13 @@ const Post = ({post}) => {
             headers: { 'Content-Type': 'application/json' },
         }).then(() => (
             setSubmitted(!submited),
-            setTimeout(setSubmitted(!submited), 4000)
+            setTimeout(setSubmitted(!submited),2000)
+
         )).catch((err) => (
             console.log(err)
         ))
     )
+
 
   return (
 <>
@@ -78,19 +80,19 @@ const Post = ({post}) => {
           <div className="row">
             {/* Comment */}
             <div className="col-md-6">
-              <div className="blog-post-comment-wrap">
+            {post.comments.map(comment => (
+           
+              <div key={comment._id} className="blog-post-comment-wrap">
                 <div className="blog-post-user-comment">
                   {" "}
                   <img src="images/team/1.jpg" alt="" />{" "}
                 </div>
                 <div className="blog-post-user-content">
                   <h3>
-                    Polina Viola &nbsp;&nbsp;<span>29 Dec 2022</span>
+                    {comment.name} &nbsp;&nbsp;<span>{new Date(comment._updatedAt).toLocaleDateString("en-EN",{ year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   </h3>
                   <p>
-                    Design in the ultricies nibh non dolor maximus miss inte
-                    molliser faubs neque nec tincidunte aliquam eraten volutpat
-                    seraese in the tempore.{" "}
+                    {comment.comment}{" "}
                   </p>{" "}
                   <a className="blog-post-repay" href="#">
                     Reply
@@ -98,11 +100,27 @@ const Post = ({post}) => {
                   </a>
                 </div>
               </div>
+            
+            ))}
             </div>
             {/* Contact Form */}
             <div className="col-md-5 offset-md-1">
               <h3>Leave a Reply</h3>
-              <form onSubmit={handleSubmit(onSubmit)} className="contact__form" action="">
+              {submited?
+              <div className="row">
+                
+              <div className="col-12">
+                <div
+                  className="alert alert-success contact__msg"
+                  style={{ display: "block"}}
+                >
+                  {" "}
+                  Your message was sent successfully.{" "}
+                </div>
+              </div>
+            </div>
+            :
+            <form onSubmit={handleSubmit(onSubmit)} className="contact__form" action="">
                 {/* Form message */}
                 <input 
                 {...register("_id")}
@@ -110,17 +128,17 @@ const Post = ({post}) => {
                 name='id'
                 value={post._id}
                 />
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-12">
                     <div
                       className="alert alert-success contact__msg"
-                      style={{ display: `${submited ? "block" : "none"}`}}
+                      style={{ display: "none"}}
                     >
                       {" "}
                       Your message was sent successfully.{" "}
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* Form elements */}
                 <div className="row">
                   <div className="col-md-12 form-group">
@@ -161,6 +179,9 @@ const Post = ({post}) => {
                   </div>
                 </div>
               </form>
+            }
+              
+              
             </div>
           </div>
         </div>

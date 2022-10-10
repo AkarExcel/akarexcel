@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
+import service from '../admin-ae/schemas/service'
 
-const Services = () => {
+const Services = ({services}) => {
 return (
 // {/* Services */}
 <section id="services" className="services clear section-padding">
@@ -23,61 +25,21 @@ return (
   <div className="row">
     <div className="col-md-12">
       <div className="owl-carousel owl-theme">
-        <div className="item">
-          <a href="services-page.html">
-            {" "}
-            <span className="icon et-laptop" />
-            <h5>Designer</h5>
-            <p>
-            I value simple content structure, clean design patterns, and thoughtful interactions.
-            </p>
-            <div className="numb">01</div>
-          </a>
-        </div>
-        <div className="item">
-          <a href="services-page.html">
-            {" "}
-            <span className="icon et-bargraph" />
-            <h5>Frontend Developer</h5>
-            <p>
-            I like to code things from scratch, and enjoy bringing ideas to life in the browser.
-            </p>
-            <div className="numb">02</div>
-          </a>
-        </div>
-        <div className="item">
-          <a href="services-page.html">
-            {" "}
-            <span className="icon et-basket" />
-            <h5>Blockchain Developer</h5>
-            <p>
-              i love the new Web3 Eco-system and the power it gives to the average individual
-            </p>
-            <div className="numb">03</div>
-          </a>
-        </div>
-        <div className="item">
-          <a href="services-page.html">
-            {" "}
-            <span className="icon et-browser" />
-            <h5>Graphic Design</h5>
-            <p>
-              i create beautiful designs that will help your business create a long lastin impression on the mind of your audience.
-            </p>
-            <div className="numb">04</div>
-          </a>
-        </div>
-        <div className="item">
-          <a href="services-page.html">
-            {" "}
-            <span className="icon et-target" />
-            <h5>Digital Marketing</h5>
-            <p>
-              I love creating Clean online campaign to boost business growth and drive sales.
-            </p>
-            <div className="numb">05</div>
-          </a>
-        </div>
+       {services.map((service,index) => (
+         <div key={service._id} className="item">
+          <Link  href={`/service/${service.slug.current}`}>
+         <a>
+           {" "}
+           <span className={`icon ${service.iconType}`} />
+           <h5>{service.title}</h5>
+           <p>
+           {service.description}
+           </p>
+           <div className="numb">{index+1> 9? "":0}{index+1}</div>
+         </a>
+         </Link>
+       </div>
+       ))}
       </div>
     </div>
   </div>

@@ -12,6 +12,7 @@ import author from './author'
 import comment from './comment'
 import reply from './reply'
 import service from './service'
+import faq from './faq'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -32,5 +33,6 @@ export default createSchema({
     comment,
     reply,
     service,
+    faq,
   ]),
 })

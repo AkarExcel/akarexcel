@@ -20,7 +20,7 @@ export default function Home({posts,services}) {
     <>
   <Navbar />
   <Hero/>
-  <div data-aos="fade-up"><Services /></div>
+  <div data-aos="fade-up"><Services services={services} /></div>
   {/* About & Skills */}
   {/* <Skills/> */}
   {/* Portfolio */}
@@ -59,11 +59,7 @@ export async function getStaticProps(){
     name,
     title,
     slug,
-    images[] -> {
-      title,
-      mainImage,
-      _id,
-    }
+    iconType
   }`
 
   const services = await sanityClient.fetch(serviceQuery)
