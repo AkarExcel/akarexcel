@@ -1,11 +1,22 @@
 import React from 'react'
 import PortableText from 'react-portable-text'
+import BlockContent from '@sanity/block-content-to-react'
 import Navbar from '../../layout/Navbar'
 import { sanityClient, urlFor } from '../../sanity'
+import Script from 'next/script'
+import Head from 'next/head'
 
 const Service = ({service}) => {
   return (
 <>
+<Head>
+    <meta charSet="utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>{service.title}</title>
+      <link rel="icon" type="image/png" href="images/favicon.png" />
+    </Head>
+    
 <Navbar/>
   {/* Services Page  */}
   <section className="section-padding services-page">
@@ -29,7 +40,7 @@ const Service = ({service}) => {
             alt=""
           />
           {/* Body */}
-          <PortableText  
+          {/* <PortableText  
                 className=''
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
@@ -59,7 +70,12 @@ const Service = ({service}) => {
                         </a>
                     )
                 }}
-            />
+            /> */}
+            <BlockContent
+                blocks={service.body}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                />
             {(service.faq.length > 0  && 
               
                 <div className="row">
@@ -93,7 +109,7 @@ const Service = ({service}) => {
           <div className="row">
             <div className="col-md-12 mt-45">
               <h5>Service About</h5>
-              <PortableText  
+              {/* <PortableText  
                 className=''
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
@@ -123,6 +139,11 @@ const Service = ({service}) => {
                         </a>
                     )
                 }}
+                /> */}
+                <BlockContent
+                blocks={service.body}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 />
             </div>
           </div>
@@ -236,7 +257,7 @@ export const getStaticPaths = async() => {
 
   return{
       paths,
-      fallback: 'blocking'
+      fallback: false
   }
 }
 

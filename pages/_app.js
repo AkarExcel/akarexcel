@@ -12,12 +12,6 @@ function MyApp({ Component, pageProps }) {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Akar Excel</title>
       <link rel="icon" type="image/png" href="images/favicon.png" />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap"
-      />
-      <link rel="stylesheet" href="css/plugins.css" />
-      <link rel="stylesheet" href="css/style.css" />
     </Head>
     <Layout>
     <Component {...pageProps} />

@@ -1,3 +1,4 @@
+import Image from 'next/future/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -13,9 +14,11 @@ const Hero = () => {
               <h6>Creative Web &amp; Web3 Developer</h6>
             </div>
             <div className="transform-banner position-relative">
-              <img
+              <Image
                 className="img header-img header-img-left wow imago"
-                src="images/slider3.jpg"
+                src="/images/slider3.jpg"
+                width={500}
+                height={500}
                 alt=""
               />
             </div>

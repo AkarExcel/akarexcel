@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -62,7 +63,11 @@ const Navbar = () => {
             <Link href="/">
             <a>
               <div className="logo">
-                <img src="images/logo-dark.png" alt="" />
+                <Image 
+                src="/images/logo-dark.png"
+                alt=""
+                width={300}
+                height={75} />
               </div>
             </a>
             </Link>

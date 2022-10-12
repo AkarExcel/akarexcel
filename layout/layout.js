@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <>
     {/* <Navbar/> */}
     {/* Preloader */}
-    <div className="preloader-bg" />
+    {/* <div className="preloader-bg" />
     <div id="preloader">
         <div id="preloader-status">
         <div className="preloader-position loader">
@@ -15,11 +15,11 @@ const Layout = ({ children }) => {
             <span />{" "}
         </div>
         </div>
-    </div>
+    </div> */}
     {/* Cursor */}
     <div className="cursor js-cursor" />
 
-    <body>{children}</body>
+    <main>{children}</main>
       <Footer />
     </>
     

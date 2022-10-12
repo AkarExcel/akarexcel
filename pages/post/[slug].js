@@ -3,6 +3,7 @@ import Navbar from '../../layout/Navbar'
 import PortableText from "react-portable-text"
 import {useForm, SubmitHandler} from "react-hook-form"
 import { sanityClient, urlFor } from '../../sanity'
+import BlockContent from '@sanity/block-content-to-react'
 
 const Post = ({post}) => {
     const [submited, setSubmitted] = useState(false)
@@ -48,7 +49,7 @@ const Post = ({post}) => {
       <div className="col-md-12">
         {" "}
         <img src={urlFor(post.mainImage).url()} className="mb-30 img-fluid" alt="" />
-        <PortableText  
+        {/* <PortableText  
                 className=''
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
@@ -75,6 +76,11 @@ const Post = ({post}) => {
                         </a>
                     )
                 }}
+                /> */}
+                <BlockContent
+                blocks={post.body}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 />
         <div className="blog-comment-section">
           <div className="row">
@@ -215,7 +221,7 @@ export const getStaticPaths = async() => {
 
     return{
         paths,
-        fallback: 'blocking'
+        fallback: false
     }
 }
 
