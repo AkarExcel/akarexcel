@@ -1,12 +1,15 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import Navbar from '../layout/Navbar'
 import { sanityClient } from '../sanity'
 
 const Services = ({services}) => {
-  console.log(services)
   return (
 <>
+<Head>
+  <title>Services</title>
+</Head>
 <Navbar/>
 <section className="services section-padding">
   <div className="container">

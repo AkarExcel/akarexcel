@@ -1,6 +1,9 @@
+import Link from 'next/link'
 import React from 'react'
+import { urlFor } from '../sanity'
 
-const Portfolio = () => {
+const Portfolio = ({portfolio}) => {
+
   return (
     <section id="portfolio" className="portfolio section-padding">
     <div className="container">
@@ -25,108 +28,27 @@ const Portfolio = () => {
       <div className="row">
         <div className="col-md-12">
           <div className="owl-carousel owl-theme">
-            <div className="item">
-              <a href="portfolio-page.html">
+            {portfolio.map((project) => (
+              <div key={project._id} className="item">
+              <Link href={`/portfolio/${project.slug.current}`}>
+              <a>
                 <div className="img-block">
                   <div className="wrapper-img">
                     {" "}
                     <img
-                      src="images/portfolio/1.jpg"
+                      src={urlFor(project.portfolioImage).url()}
                       className="img-fluid"
                     />{" "}
                   </div>
                   <div className="title-block">
-                    <h4>Lab. 001</h4>
-                    <p>Website Design</p>
+                    <h4>{project.title}</h4>
+                    <p>{project.service}</p>
                   </div>
                 </div>
               </a>
+              </Link>
             </div>
-            <div className="item">
-              <a href="portfolio-page.html">
-                <div className="img-block">
-                  <div className="wrapper-img">
-                    {" "}
-                    <img
-                      src="images/portfolio/2.jpg"
-                      className="img-fluid"
-                    />{" "}
-                  </div>
-                  <div className="title-block">
-                    <h4>Aer Agency</h4>
-                    <p>Website / Development</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="item">
-              <a href="portfolio-page.html">
-                <div className="img-block">
-                  <div className="wrapper-img">
-                    {" "}
-                    <img
-                      src="images/portfolio/3.jpg"
-                      className="img-fluid"
-                    />{" "}
-                  </div>
-                  <div className="title-block">
-                    <h4>Joker Card</h4>
-                    <p>UX Design / Web App</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="item">
-              <a href="portfolio-page.html">
-                <div className="img-block">
-                  <div className="wrapper-img">
-                    {" "}
-                    <img
-                      src="images/portfolio/4.jpg"
-                      className="img-fluid"
-                    />{" "}
-                  </div>
-                  <div className="title-block">
-                    <h4>Peaky Blinders</h4>
-                    <p>Website / UX Design</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="item">
-              <a href="portfolio-page.html">
-                <div className="img-block">
-                  <div className="wrapper-img">
-                    {" "}
-                    <img
-                      src="images/portfolio/5.jpg"
-                      className="img-fluid"
-                    />{" "}
-                  </div>
-                  <div className="title-block">
-                    <h4>Design Zoom</h4>
-                    <p>Branding / Design</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="item">
-              <a href="portfolio-page.html">
-                <div className="img-block">
-                  <div className="wrapper-img">
-                    {" "}
-                    <img
-                      src="images/portfolio/6.jpg"
-                      className="img-fluid"
-                    />{" "}
-                  </div>
-                  <div className="title-block">
-                    <h4>Out Zone</h4>
-                    <p>UX Design / Web App</p>
-                  </div>
-                </div>
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -136,3 +58,4 @@ const Portfolio = () => {
 }
 
 export default Portfolio
+

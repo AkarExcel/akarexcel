@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import Client from '../component/Client'
 import Testimonial from '../component/Testimonial'
@@ -6,6 +7,9 @@ import Navbar from '../layout/Navbar'
 const Contact = () => {
   return (
 <>
+<Head>
+  <title>Contact Us</title>
+</Head>
 <Navbar/>
   <section className="contact section-padding">
     <div className="container">
