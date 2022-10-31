@@ -18,13 +18,13 @@ const Testimonial = () => {
           items: 1
       },
     600: {
-          items: 2
+          items: 1
       },
     1000: {
-          items: 3
+          items: 1
       }
   }
-  
+
   return (
 <section id="testimonials" className="testimonials">
     <div
@@ -55,7 +55,18 @@ const Testimonial = () => {
           <div className="col-md-5 offset-md-1">
             <div className="testimonials-box">
               <h5>What Are Clients Saying?</h5>
-              <div className="owl-carousel owl-theme">
+              <OwlCarousel
+      
+              loop
+              margin={30}
+              mouseDrag = {true}
+              autoplay = {false}
+              dots =  {false}
+              nav =  {false}
+              navText =  {["<span class='lnr ti-angle-left'></span>","<span class='lnr ti-angle-right'></span>"]}
+              responsiveClass= {true}
+              responsive =  {responsive}
+              >
                 <div className="item">
                   <p>
                     Dan entesque magna magna semper daibus elisan neca aliuen
@@ -97,7 +108,7 @@ const Testimonial = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+             </OwlCarousel> 
             </div>
           </div>
         </div>

@@ -15,14 +15,15 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 const Client = () => {
   const responsive = {
-    0: {
-          items: 1
-      },
-    600: {
+    0: {  
+          margin: 10,
           items: 2
       },
-    1000: {
+    600: {
           items: 3
+      },
+    1000: {
+          items: 4
       }
   }
   return (
@@ -35,11 +36,10 @@ const Client = () => {
       loop
       margin={10}
       mouseDrag = {true}
-      autoplay = {false}
+      autoplay = {true}
       dots =  {false}
-      autoplayHoverPause = {true}
       nav =  {false}
-      navText =  {["<span class='lnr ti-angle-left'></span>","<span class='lnr ti-angle-right'></span>"]}
+      navText =  {['<i class="ti-arrow-left" aria-hidden="true"></i>', '<i class="ti-arrow-right" aria-hidden="true"></i>']}
       responsiveClass= {true}
       responsive =  {responsive}
       >

@@ -51,7 +51,7 @@ const Portfolio = ({portfolio}) => {
         <OwlCarousel
       
       loop
-      margin={10}
+      margin={15}
       mouseDrag = {true}
       autoplay = {false}
       dots =  {false}
