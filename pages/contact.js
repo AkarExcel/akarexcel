@@ -6,7 +6,6 @@ import Testimonial from '../component/Testimonial'
 import Navbar from '../layout/Navbar'
 
 const Contact = () => {
-  const customJs = import("./service/js/custom.js").default
   return (
 <>
 <Head>

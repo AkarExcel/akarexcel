@@ -1,6 +1,30 @@
 import React from 'react'
+// import owl carousel
+var $ = require("jquery");
+if (typeof window !== "undefined") {
+   window.$ = window.jQuery = require("jquery");
+}
+import dynamic from 'next/dynamic';
+const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
+  ssr: false,
+});
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 
 const Testimonial = () => {
+  const responsive = {
+    0: {
+          items: 1
+      },
+    600: {
+          items: 2
+      },
+    1000: {
+          items: 3
+      }
+  }
+  
   return (
 <section id="testimonials" className="testimonials">
     <div

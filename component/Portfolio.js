@@ -1,9 +1,30 @@
 import Link from 'next/link'
 import React from 'react'
+// owl import
+var $ = require("jquery");
+if (typeof window !== "undefined") {
+   window.$ = window.jQuery = require("jquery");
+}
+import dynamic from 'next/dynamic';
+const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
+  ssr: false,
+});
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { urlFor } from '../sanity'
 
 const Portfolio = ({portfolio}) => {
-
+  const responsive = {
+    0: {
+          items: 1
+      },
+    600: {
+          items: 2
+      },
+    1000: {
+          items: 3
+      }
+  }
   return (
     <section id="portfolio" className="portfolio section-padding">
     <div className="container">
@@ -27,8 +48,20 @@ const Portfolio = ({portfolio}) => {
     <div className="full-width">
       <div className="row">
         <div className="col-md-12">
-          <div className="owl-carousel owl-theme">
-            {portfolio.map((project) => (
+        <OwlCarousel
+      
+      loop
+      margin={10}
+      mouseDrag = {true}
+      autoplay = {false}
+      dots =  {false}
+      autoplayHoverPause = {true}
+      nav =  {false}
+      navText =  {["<span class='lnr ti-angle-left'></span>","<span class='lnr ti-angle-right'></span>"]}
+      responsiveClass= {true}
+      responsive =  {responsive}
+      >
+             {portfolio.map((project) => (
               <div key={project._id} className="item">
               <Link href={`/portfolio/${project.slug.current}`}>
               <a>
@@ -48,8 +81,8 @@ const Portfolio = ({portfolio}) => {
               </a>
               </Link>
             </div>
-            ))}
-          </div>
+            ))}     
+      </OwlCarousel>
         </div>
       </div>
     </div>

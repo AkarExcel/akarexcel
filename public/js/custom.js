@@ -34,8 +34,8 @@
     var wind = $(window);
 
     // Menu Navigation
-    var OnePageNav = function () {
-        var navToggler = $('.nilsbrown-js-nav-toggle');
+   var OnePageNav = function () {
+         var navToggler = $('.nilsbrown-js-nav-toggle');
         $(".smoothscroll[href^='#'], #nilsbrown-navbar ul li a[href^='#']").on('click', function (e) {
             e.preventDefault();
             var hash = this.hash;
