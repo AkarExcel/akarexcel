@@ -12,12 +12,12 @@ function MyApp({ Component, pageProps }) {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Akar Excel</title>
       <link rel="icon" type="image/png" href="images/favicon.png" />
+      
     </Head>
     <Layout>
     <Component {...pageProps} />
     </Layout>
-       
-      <Script src="js/plugins/jquery-3.6.0.min.js" strategy="lazyOnload"/>
+      <Script src="js/plugins/jquery-3.6.0.min.js" />
       <Script src="js/plugins/bootstrap.min.js"/>
       <Script src="js/plugins/owl.carousel.min.js"/>
       <Script src="js/plugins/jquery.magnific-popup.min.js"/>
@@ -25,7 +25,8 @@ function MyApp({ Component, pageProps }) {
       <Script src="js/plugins/jquery.easing.1.3.js"/>
       <Script src="js/plugins/smooth-scroll.min.js"/>
       <Script src="js/plugins/wow.js"/>
-      <Script src="js/custom.js"/>
+      <Script src="js/custom.js" strategy="lazyOnload"/>
+
       </>
   )
   

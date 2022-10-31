@@ -13,7 +13,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script src="js/plugins/jquery-3.6.0.min.js"></Script>
+      </body>
+      {/* <Script src="js/plugins/jquery-3.6.0.min.js"></Script>
       <Script src="js/plugins/bootstrap.min.js"></Script>
       <Script src="js/plugins/owl.carousel.min.js"></Script>
       <Script src="js/plugins/jquery.magnific-popup.min.js"></Script>
@@ -21,8 +22,7 @@ export default function Document() {
       <Script src="js/plugins/jquery.easing.1.3.js"></Script>
       <Script src="js/plugins/smooth-scroll.min.js"></Script>
       <Script src="js/plugins/wow.js"></Script>
-      <Script src="js/custom.js"></Script>
-      </body>
+      <Script src='js/custom.js'></Script> */}
     </Html>
   )
 }

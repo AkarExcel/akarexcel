@@ -1,14 +1,17 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import React from 'react'
 import Client from '../component/Client'
 import Testimonial from '../component/Testimonial'
 import Navbar from '../layout/Navbar'
 
 const Contact = () => {
+  const customJs = import("./service/js/custom.js").default
   return (
 <>
 <Head>
   <title>Contact Us</title>
+
 </Head>
 <Navbar/>
   <section className="contact section-padding">
@@ -152,6 +155,7 @@ const Contact = () => {
   </section>
   <Testimonial/>
   <Client/>
+   
 </>
 
   )
