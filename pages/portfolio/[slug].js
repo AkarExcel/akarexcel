@@ -6,6 +6,18 @@ import { sanityClient, urlFor } from '../../sanity'
 import Script from 'next/script'
 import Head from 'next/head'
 import Link from 'next/link'
+// import owl carousel
+var $ = require("jquery");
+if (typeof window !== "undefined") {
+   window.$ = window.jQuery = require("jquery");
+}
+import dynamic from 'next/dynamic';
+const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
+  ssr: false,
+});
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 
 const Portfolio = ({portfolio, morePortfolio}) => {
   return (
@@ -18,15 +30,6 @@ const Portfolio = ({portfolio, morePortfolio}) => {
       <link rel="icon" type="image/png" href="images/favicon.png" />
 </Head>
 
-    <Script src="js/plugins/jquery-3.6.0.min.js"></Script>
-      <Script src="js/plugins/bootstrap.min.js"></Script>
-      <Script src="js/plugins/owl.carousel.min.js"></Script>
-      <Script src="js/plugins/jquery.magnific-popup.min.js"></Script>
-      <Script src="js/plugins/YouTubePopUp.js"></Script>
-      <Script src="js/plugins/jquery.easing.1.3.js"></Script>
-      <Script src="js/plugins/smooth-scroll.min.js"></Script>
-      <Script src="js/plugins/wow.js"></Script>
-      <Script src="js/custom.js"></Script>  
 <Navbar/>
 <section className="section-padding portfolio-page">
   <div className="container">
@@ -35,8 +38,29 @@ const Portfolio = ({portfolio, morePortfolio}) => {
         {/* Images */}
         <div className="row">
           <div className="col-md-12 gallery-item">
-            <div className="owl-carousel owl-theme text-center">
-              {/* {portfolio.gallery && portfolio.gallery.map((image, index) => (
+              <OwlCarousel
+              loop
+              margin={15}
+              mouseDrag={true}
+              autoplay={false}
+              dots={false}
+              nav={false}
+              navText={['<i class="ti-arrow-left" aria-hidden="true"></i>', '<i class="ti-arrow-right" aria-hidden="true"></i>']}
+              responsiveClass= {true}
+              responsive={
+                {
+                  0: {
+                    items: 1,
+                  },
+                  600: {
+                      items: 1
+                  }
+                  , 1000: {
+                      items: 1
+                  }
+              }}
+              >
+              {portfolio.gallery && portfolio.gallery.map((image, index) => (
                 <div key={index} className="item">
                 <div className="gallery-item-inner">
                   <a
@@ -57,69 +81,9 @@ const Portfolio = ({portfolio, morePortfolio}) => {
                   </a>
                 </div>
               </div>
-              ))} */}
-              
-              <div className="item">
-                <div className="gallery-item-inner">
-                  <a
-                    href="images/portfolio/2.jpg"
-                    title=""
-                    className="img-zoom"
-                  >
-                    <div className="gallery-box">
-                      <div className="gallery-img">
-                        {" "}
-                        <img
-                          src="images/portfolio/2.jpg"
-                          className="img-fluid mx-auto d-block"
-                          alt=""
-                        />{" "}
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="item">
-                <div className="gallery-item-inner">
-                  <a
-                    href="images/portfolio/3.jpg"
-                    title=""
-                    className="img-zoom"
-                  >
-                    <div className="gallery-box">
-                      <div className="gallery-img">
-                        {" "}
-                        <img
-                          src="images/portfolio/3.jpg"
-                          className="img-fluid mx-auto d-block"
-                          alt=""
-                        />{" "}
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="item">
-                <div className="gallery-item-inner">
-                  <a
-                    href="images/portfolio/3.jpg"
-                    title=""
-                    className="img-zoom"
-                  >
-                    <div className="gallery-box">
-                      <div className="gallery-img">
-                        {" "}
-                        <img
-                          src="images/portfolio/3.jpg"
-                          className="img-fluid mx-auto d-block"
-                          alt=""
-                        />{" "}
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
+              ))}
+              </OwlCarousel>
+
           </div>
         </div>
       </div>

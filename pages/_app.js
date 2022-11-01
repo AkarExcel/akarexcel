@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
     <Script src="js/plugins/jquery.easing.1.3.js" />
     <Script src="js/plugins/smooth-scroll.min.js" />
     <Script src="js/plugins/wow.js" />
-    {/* <Script src="js/custom.js" strategy="afterInteractive"/> */}
+    <Script src="js/custom.js" strategy="afterInteractive"/>
   </>
   )
   

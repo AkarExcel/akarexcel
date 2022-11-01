@@ -1,4 +1,5 @@
 import React from 'react'
+import banner from './banner.jpg'
 // import owl carousel
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -13,6 +14,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 
 const Testimonial = () => {
+
+
   const responsive = {
     0: {
           items: 1
@@ -29,7 +32,13 @@ const Testimonial = () => {
 <section id="testimonials" className="testimonials">
     <div
       className="background bg-img bg-fixed section-padding pb-0"
-      data-background="images/banner.jpg"
+      //data-background="images/banner.jpg"
+      style={
+        {
+          //backgroundImage: `url(${banner})`,
+          backgroundImage: `url(/images/banner.jpg)`
+        }}
+
     >
       <div className="container">
         <div className="row">

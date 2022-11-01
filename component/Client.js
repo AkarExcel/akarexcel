@@ -14,6 +14,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 
 const Client = () => {
+
   const responsive = {
     0: {  
           margin: 10,
