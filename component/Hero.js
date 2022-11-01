@@ -15,7 +15,7 @@ const Hero = () => {
             </div>
             <div className="transform-banner position-relative">
               <Image
-                className="img header-img header-img-left wow imago"
+                className="img header-img header-img-left wow imago animated"
                 src="/images/slider3.jpg"
                 width={500}
                 height={500}

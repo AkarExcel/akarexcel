@@ -60,51 +60,7 @@ if(typeof window !== "undefined"){
          }
      }
  });
-//  $('.nilsbrown-js-nav-toggle').on('click', function (e) {
-//      var $this = $(this);
-//      e.preventDefault();
-//      if ($('body').hasClass('menu-open')) {
-//          $this.removeClass('active');
-//          $('.nilsbrown-menu .nilsbrown-menu-inner > ul > li').each(function (i) {
-//              var that = $(this);
-//              setTimeout(function () {
-//                  that.removeClass('is-show');
-//              }, i * 100);
-//          });
-//          setTimeout(function () {
-//              $('.nilsbrown-menu').removeClass('nilsbrown-menu-show');
-//          }, 800);
-//          $('body').removeClass('menu-open');
-//      }
-//      else {
-//          $('.nilsbrown-menu').addClass('nilsbrown-menu-show');
-       
-//          $this.addClass('active');
-//          $('body').addClass('menu-open');
-//          setTimeout(function () {
-//              $('.nilsbrown-menu .nilsbrown-menu-inner > ul > li').each(function (i) {
-//                  var that = $(this);
-//                  setTimeout(function () {
-//                      that.addClass('is-show');
-//                  }, i * 100);
-//              });
-//          }, 500);
-//      }
-//  });
-//  $('.nilsbrown-menu .dropdown').hover(function () {
-//      var $this = $(this);
-//      $this.addClass('show');
-//      $this.find('> a').attr('aria-expanded', true);
-//      $this.find('.dropdown-menu').addClass('show');
-//  }, function () {
-//      var $this = $(this);
-//      $this.removeClass('show');
-//      $this.find('> a').attr('aria-expanded', false);
-//      $this.find('.dropdown-menu').removeClass('show');
-//  });
 
-
-   
 }
 
 const Navbar = () => {
@@ -122,10 +78,10 @@ const Navbar = () => {
     name: 'Portfolio',
     link: '/portfolio'
   },
-  {
-    name: "Resume",
-    link: "/resume"
-  },
+  // {
+  //   name: "Resume",
+  //   link: "/resume"
+  // },
   {
     name: "Services",
     link: "/services"
@@ -164,16 +120,6 @@ const Navbar = () => {
             
             </li>
         ))}
-
-        {/* Dropdown menu
-          <li class="dropdown"> <span>Dropdown <i class="ti-angle-down"></i></span>
-              <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="#">Dropdown 1</a></li>
-                  <li class="dropdown-item"><a href="#">Dropdown 2</a></li>
-                  <li class="dropdown-item"><a href="#">Dropdown 3</a></li>
-              </ul>
-          </li>
-          */}
       </ul>
     </div>
   </nav>
@@ -186,7 +132,9 @@ const Navbar = () => {
           <div className="logo-wrap">
             <Link href="/">
             <a>
-              <div className="logo">
+              <div className="logo" style={{
+                paddingDown: "200px"
+              }}>
                 <Image 
                 src="/images/logo-dark.png"
                 alt=""
