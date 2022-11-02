@@ -10,7 +10,7 @@ import Testimonial from "../component/Testimonial"
 import Navbar from "../layout/Navbar"
 import { sanityClient } from "../sanity"
 
-export default function Home({posts,services, portfolio}) {
+export default function Home({posts,services, portfolio, testimonial}) {
 
   useEffect(() => {
     Aos.init({duration:800, once: true, easing: "ease-in-quart"})
@@ -28,7 +28,7 @@ export default function Home({posts,services, portfolio}) {
   {/* Homepage Blog */}
   <div data-aos="fade-up"><Blog posts={posts}/></div>
   {/* Testiominals */}
-  <Testimonial/>
+  <Testimonial testimonial={testimonial}/>
   {/* Clients */}
   <Client/>
 </>
@@ -71,14 +71,23 @@ export async function getStaticProps(){
     service
   }`
 
+  const testimonialQuery = `*[_type == 'testimonial' && approved == true]{
+    _id,
+    description,
+    position,
+    name,
+    authorImage,
+  }`
+
   const services = await sanityClient.fetch(serviceQuery)
   const portfolio = await sanityClient.fetch(portfolioQuery)
+  const testimonial = await sanityClient.fetch(testimonialQuery)
 
   const posts = await sanityClient.fetch(query)
   // const services = data;
   return{
     props: {
-      posts,services,portfolio
+      posts,services,portfolio,testimonial
     }
   }
 } 

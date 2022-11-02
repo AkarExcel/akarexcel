@@ -5,6 +5,7 @@
 admin-ae/node_modules
 /.pnp
 .pnp.js
+sanity.js
 
 
 # testing

@@ -14,6 +14,7 @@ import reply from './reply'
 import service from './service'
 import faq from './faq'
 import portfolio from './portfolio'
+import testimonial from './testimonial'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -36,5 +37,6 @@ export default createSchema({
     service,
     faq,
     portfolio,
+    testimonial,
   ]),
 })
