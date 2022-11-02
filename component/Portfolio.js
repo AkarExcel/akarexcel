@@ -39,8 +39,8 @@ const Portfolio = ({portfolio}) => {
         </div>
         <div className="col-md-7 offset-md-1 mt-45">
           <p className="wow fadeInUp" data-wow-delay=".6s">
-            i may not be the most seasoned Developer, but take pride in my design and Developer Skill
-            to create the the best Web App, Smart contract that both look good and are fully functional.
+            With a Couple of years under my belt as a Developer and Graphic Artist, i take pride in my ability
+            to create the best Web App, Smart contract, Flyer and Other Digital services that both look good and are fully functional.
           </p>
         </div>
       </div>

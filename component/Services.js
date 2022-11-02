@@ -38,7 +38,8 @@ return (
     </div>
     <div className="col-md-7 offset-md-1 mt-45">
       <p className="wow fadeInUp" data-wow-delay=".6s">
-        These are my best Services, i always gives my best Efforts.
+      Get any of our Services it is easy to Setup, drives conversions, and captures your story. 
+      It’s time to Grow your Business Online.   
       </p>
     </div>
   </div>

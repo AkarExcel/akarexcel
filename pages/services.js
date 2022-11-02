@@ -19,7 +19,7 @@ const Services = ({services}) => {
     <div className="row mb-45">
       <div className="col-md-4">
         <h6 className="wow" data-splitting="">
-          Services That I Provide
+          Services That We Provide
         </h6>
         <h1 className="wow" data-splitting="">
           Services
@@ -27,10 +27,9 @@ const Services = ({services}) => {
       </div>
       <div className="col-md-7 offset-md-1 mt-45">
         <p className="wow fadeInUp" data-wow-delay=".6s">
-          Phasellus et lacus suscipit congue nisl the volutpat magna. donec miss
-          the drana risus tincidunt convallis velit orci congue tortor eu
-          dignissim ipsum suam non odio. Pellenta esuntion miss the imperdiet
-          metus ornare.
+          We are commited to giving you the best services, All our
+          Services are done with 100% commitment to client satisfaction
+          <strong>{" "}Get the Best Service Today</strong>
         </p>
       </div>
     </div>
