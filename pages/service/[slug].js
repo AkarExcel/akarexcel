@@ -3,7 +3,6 @@ import PortableText from 'react-portable-text'
 import BlockContent from '@sanity/block-content-to-react'
 import Navbar from '../../layout/Navbar'
 import { sanityClient, urlFor } from '../../sanity'
-import Script from 'next/script'
 import Head from 'next/head'
 
 const Service = ({service}) => {

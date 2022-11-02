@@ -4,8 +4,33 @@ import React from 'react'
 import Client from '../component/Client'
 import Testimonial from '../component/Testimonial'
 import Navbar from '../layout/Navbar'
+import {useForm, SubmitHandler} from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
+  const {register, handleSubmit,
+    formState: {errors}}  = useForm();
+
+
+  const onSubmit = async(data) => (
+      await fetch('/api/contact', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' },
+      }).then(
+        toast('Your message was sent successfully. ', {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+          pauseOnHover: false,
+      })
+      )
+      .then(() => (
+          console.log(data)
+      )).catch((err) => (
+          console.log(err)
+      ))
+  )
   return (
 <>
 <Head>
@@ -61,7 +86,7 @@ const Contact = () => {
         <div className="col-md-5 offset-md-1">
           <h5>Get in touch!</h5>
           <form
-            method="post"
+            onSubmit={handleSubmit(onSubmit)}
             className="contact__form"
             action="https://duruthemes.com/demo/html/nils/nils-light/mail.php"
           >
@@ -82,6 +107,7 @@ const Contact = () => {
             <div className="row">
               <div className="col-md-12 form-group">
                 <input
+                {...register("name", {required: true})}
                   name="name"
                   type="text"
                   placeholder="Name *"
@@ -90,6 +116,7 @@ const Contact = () => {
               </div>
               <div className="col-md-6 form-group">
                 <input
+                {...register("email", {required: true})}
                   name="email"
                   type="email"
                   placeholder="Email Address *"
@@ -98,6 +125,7 @@ const Contact = () => {
               </div>
               <div className="col-md-6 form-group">
                 <input
+                {...register("phone", {required: true})}
                   name="phone"
                   type="text"
                   placeholder="Phone *"
@@ -106,6 +134,7 @@ const Contact = () => {
               </div>
               <div className="col-md-12 form-group">
                 <input
+                {...register("subject", {required: true})}
                   name="subject"
                   type="text"
                   placeholder="Subject *"
@@ -114,6 +143,7 @@ const Contact = () => {
               </div>
               <div className="col-md-12 form-group">
                 <textarea
+                {...register("message", {required: true})}
                   name="message"
                   id="message"
                   cols={30}
@@ -127,12 +157,16 @@ const Contact = () => {
                 <div className="btn-wrap">
                   <div className="btn-link">
                     <input type="submit" defaultValue="Get in touch" />{" "}
-                    <span className="btn-block color1 animation-bounce" />
+                    <span className="btn-block color1 animation-bounce" />        
                   </div>
                 </div>
               </div>
             </div>
           </form>
+          <ToastContainer 
+          autoClose={2000}
+          pauseOnHover={false}
+          />
         </div>
       </div>
     </div>

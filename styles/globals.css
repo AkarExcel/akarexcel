@@ -1,2 +1,10 @@
 @import url("css/plugins.css");
 @import url("css/style.css");
+
+.toast-message {
+    background: rgb(236, 236, 236);
+    color: rgb(26, 24, 24);
+    font-size: 20px;
+    width: 34vw;
+    padding: 30px 20px;
+}

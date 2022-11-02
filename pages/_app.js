@@ -17,6 +17,7 @@ import "aos/dist/aos.css";
 
 
 
+
 function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
@@ -41,13 +42,13 @@ function MyApp({ Component, pageProps }) {
     <Component {...pageProps} />
     </Layout>
 
-    <Script src="js/plugins/jquery-3.6.0.min.js" />
+    {/* <Script src="js/plugins/jquery-3.6.0.min.js" />
     <Script src="js/plugins/bootstrap.min.js" />
     <Script src="js/plugins/jquery.magnific-popup.min.js" />
     <Script src="js/plugins/jquery.easing.1.3.js" />
     <Script src="js/plugins/smooth-scroll.min.js" />
     <Script src="js/plugins/wow.js" />
-    <Script src="js/custom.js" strategy="afterInteractive"/>
+    <Script src="js/custom.js" strategy="afterInteractive"/> */}
   </>
   )
   
