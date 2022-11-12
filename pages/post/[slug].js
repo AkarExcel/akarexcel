@@ -49,39 +49,44 @@ const Post = ({post}) => {
       <div className="col-md-12">
         {" "}
         <img src={urlFor(post.mainImage).url()} className="mb-30 img-fluid" alt="" />
-        <PortableText  
-                className=''
-                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                content={post.body}
-                serializers = {{
-                    h1: (props) => (
-                        <h1 className='text-3xl font-bold my-5' {...props} />
-                        ),
-                    h2: (props) => (
-                        <h2 className='text-xl font-bold my-5' {...props} />
-                        ),
-                    li: ({children}) => (
-                        <li className='ml-8 list-disc' >
-                            {children}
-                        </li>
-                    ),
-                    blockquote: ({children}) => (
-                        <blockquote className='mx-4 italic font-thin text-slate-400 my-5 blockquote'>{children}</blockquote>
-                    )
-                    ,
-                    link: ({href,children}) => (
-                        <a href={href} className="text-blue-500 hover:underline">
-                            {children}
-                        </a>
-                    )
-                }}
-                />
-                {/* <BlockContent
-                blocks={post.body}
-                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                /> */}
+        {post.body ?
+          <PortableText  
+          className=''
+          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+          content={post.body}
+          serializers = {{
+              h1: (props) => (
+                  <h1 className='text-3xl font-bold my-5' {...props} />
+                  ),
+              h2: (props) => (
+                  <h2 className='text-xl font-bold my-5' {...props} />
+                  ),
+              li: ({children}) => (
+                  <li className='ml-8 list-disc' >
+                      {children}
+                  </li>
+              ),
+              blockquote: ({children}) => (
+                  <blockquote className='mx-4 italic font-thin text-slate-400 my-5 blockquote'>{children}</blockquote>
+              )
+              ,
+              link: ({href,children}) => (
+                  <a href={href} className="text-blue-500 hover:underline">
+                      {children}
+                  </a>
+              )
+          }}
+          />
+          :                
+          <BlockContent
+          blocks={post.body}
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+          /> 
+  }
+
+
         <div className="blog-comment-section">
           <div className="row">
             {/* Comment */}
