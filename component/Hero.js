@@ -17,8 +17,8 @@ const Hero = () => {
               <Image
                 className="img header-img header-img-left wow imago animated"
                 src="/images/slider3.jpg"
-                width={500}
-                height={500}
+                width={400}
+                height={400}
                 alt=""
               />
             </div>

@@ -11,10 +11,11 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
 });
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { urlFor } from '../sanity'
 
 
-const Testimonial = () => {
-
+const Testimonial = ({testimonial}) => {
+console.log(testimonial)
 
   const responsive = {
     0: {
@@ -76,47 +77,27 @@ const Testimonial = () => {
               responsiveClass= {true}
               responsive =  {responsive}
               >
-                <div className="item">
-                  <p>
-                    Dan entesque magna magna semper daibus elisan neca aliuen
-                    risus morbi tristique senectus et netus malesuada fames ac
-                    urpis egestas. Nullam miss muris ulvinar miss in the libero
-                    dictum.
-                  </p>{" "}
-                  <span className="quote">
-                    <img src="images/quot.png" alt="" />
-                  </span>
-                  <div className="info">
-                    <div className="author-img">
-                      {" "}
-                      <img src="images/team/1.jpg" alt="" />{" "}
-                    </div>
-                    <div className="cont">
-                      <h6>Emily Brown</h6> <span>Project Owner</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
+                {testimonial && testimonial.map((testimony) => (
+              <div key={testimony._id} className="item">
+              <p>
+                {testimony.description}
+              </p>{" "}
+              <span className="quote">
+                <img src="images/quot.png" alt="" />
+              </span>
+              <div className="info">
+                <div className="author-img">
                   {" "}
-                  <span className="quote">
-                    <img src="images/quot.png" alt="" />
-                  </span>
-                  <p>
-                    Dan entesque magna magna semper daibus elisan neca aliuen
-                    risus morbi tristique senectus et netus malesuada fames ac
-                    urpis egestas. Nullam miss muris ulvinar miss in the libero
-                    dictum.
-                  </p>
-                  <div className="info">
-                    <div className="author-img">
-                      {" "}
-                      <img src="images/team/2.jpg" alt="" />{" "}
-                    </div>
-                    <div className="cont">
-                      <h6>Jason White</h6> <span>Project Owner</span>
-                    </div>
-                  </div>
+                  <img src={urlFor(testimony.authorImage).url()} alt="" />{" "}
                 </div>
+                <div className="cont">
+                  <h6>{testimony.name}</h6> <span>{testimony.position}</span>
+                </div>
+              </div>
+            </div>
+                ))}
+  
+ 
              </OwlCarousel> 
             </div>
           </div>
