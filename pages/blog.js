@@ -201,7 +201,7 @@ const Blog = ({posts}) => {
 
 export default Blog
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   const query = `*[_type == "post"][0...100]{
     _id,
     title,
