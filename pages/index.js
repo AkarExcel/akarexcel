@@ -36,7 +36,7 @@ export default function Home({posts,services, portfolio, testimonial}) {
   )
 }
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   const query = `*[_type == "post"][0...3]{
     _id,
     title,
@@ -82,9 +82,8 @@ export async function getStaticProps(){
   const services = await sanityClient.fetch(serviceQuery)
   const portfolio = await sanityClient.fetch(portfolioQuery)
   const testimonial = await sanityClient.fetch(testimonialQuery)
-
   const posts = await sanityClient.fetch(query)
-  // const services = data;
+
   return{
     props: {
       posts,services,portfolio,testimonial

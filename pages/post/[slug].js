@@ -49,7 +49,7 @@ const Post = ({post}) => {
       <div className="col-md-12">
         {" "}
         <img src={urlFor(post.mainImage).url()} className="mb-30 img-fluid" alt="" />
-        {/* <PortableText  
+        <PortableText  
                 className=''
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
@@ -67,7 +67,7 @@ const Post = ({post}) => {
                         </li>
                     ),
                     blockquote: ({children}) => (
-                        <blockquote className='mx-4 italic font-thin text-slate-400 my-5'>{children}</blockquote>
+                        <blockquote className='mx-4 italic font-thin text-slate-400 my-5 blockquote'>{children}</blockquote>
                     )
                     ,
                     link: ({href,children}) => (
@@ -76,12 +76,12 @@ const Post = ({post}) => {
                         </a>
                     )
                 }}
-                /> */}
-                <BlockContent
+                />
+                {/* <BlockContent
                 blocks={post.body}
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                />
+                /> */}
         <div className="blog-comment-section">
           <div className="row">
             {/* Comment */}

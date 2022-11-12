@@ -8,3 +8,12 @@
     width: 34vw;
     padding: 30px 20px;
 }
+.blockquote {
+    position: relative;
+    padding-left: 1em;
+    border-left: 0.2em solid rgb(114, 113, 113);
+    font-family: 'Roboto', serif;
+    font-size: 1em;
+    line-height: 1.2em;
+    font-weight: 100;
+}
