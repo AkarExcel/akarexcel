@@ -15,7 +15,6 @@ import { urlFor } from '../sanity'
 
 
 const Testimonial = ({testimonial}) => {
-console.log(testimonial)
 
   const responsive = {
     0: {

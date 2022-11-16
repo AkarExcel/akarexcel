@@ -201,7 +201,7 @@ const Blog = ({posts}) => {
 
 export default Blog
 
-export async function getServerSideProps(){
+export async function getStaticProps(){
   const query = `*[_type == "post"][0...100]{
     _id,
     title,
@@ -239,6 +239,7 @@ export async function getServerSideProps(){
     props: {
       posts
       // ,services
-    }
+    },
+    revalidate: 900 // revalidate every 15mins
   }
 } 
