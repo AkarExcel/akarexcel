@@ -74,6 +74,7 @@ export async function getStaticProps(){
     return{
       props: {
         services
-      }
+      },
+      revalidate: 900 // revalidate every 15mins
     }
   }

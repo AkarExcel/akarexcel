@@ -24,10 +24,8 @@ const Portfolio = ({portfolios}) => {
       </div>
       <div className="col-md-7 offset-md-1 mt-45">
         <p className="wow fadeInUp" data-wow-delay=".6s">
-          Phasellus et lacus suscipit congue nisl the volutpat magna. donec miss
-          the drana risus tincidunt convallis velit orci congue tortor eu
-          dignissim ipsum suam non odio. Pellenta esuntion miss the imperdiet
-          metus ornare.
+          This is a catalogy of some of the work i have done for client,
+           that deserves to be shown on the internet, hope you enjoy them.
         </p>
       </div>
     </div>
@@ -78,6 +76,7 @@ export async function getStaticProps(){
   return{
     props: {
       portfolios
-    }
+    },
+    revalidate: 320
   }
 }

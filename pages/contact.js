@@ -104,7 +104,7 @@ const Contact = () => {
               </div>
             </div>
             {/* Form elements */}
-            <div className="row">
+            <div className="row border">
               <div className="col-md-12 form-group">
                 <input
                 {...register("name", {required: true})}
