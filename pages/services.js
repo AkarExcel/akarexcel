@@ -42,7 +42,7 @@ const Services = ({services}) => {
             {" "}
             <span className="icon et-laptop" />
             <h5>{service.title}</h5>
-            <p>
+            <p className='text'>
               {service.description}
             </p>
             <div className="numb">{index+1> 9? "":0}{index+1}</div>

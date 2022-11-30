@@ -121,6 +121,17 @@ const Portfolio = ({portfolio, morePortfolio}) => {
             <span className="btn-block color1 animation-bounce" />{" "}
           </div>
         </div>
+        <div 
+          className="btn-wrap wow fadeInUp text-left mt-45 bg.color"
+          data-wow-delay=".9s">
+        <div className="btn-link">
+            {" "}
+            <Link href='/contact' target="_blank" rel='noreferrer'>
+              <a>Get Quote <i className="ti-arrow-top-right" />{" "}</a> 
+            </Link>{" "}
+            <span className="btn-block color1 animation-bounce" />{" "}
+          </div>
+        </div>
       </div>
     </div>
   </div>

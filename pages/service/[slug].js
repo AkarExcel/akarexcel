@@ -2,6 +2,7 @@ import React from 'react'
 import PortableText from 'react-portable-text'
 import BlockContent from '@sanity/block-content-to-react'
 import Navbar from '../../layout/Navbar'
+import Link from 'next/link'
 import { sanityClient, urlFor } from '../../sanity'
 import Head from 'next/head'
 
@@ -75,6 +76,7 @@ const Service = ({service}) => {
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 />
+
             {(service.faq.length > 0  && 
               
                 <div className="row">
@@ -144,6 +146,17 @@ const Service = ({service}) => {
                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                 />
+                <div 
+                  className="btn-wrap wow fadeInUp text-left mt-45 bg-color"
+                  data-wow-delay=".9s">
+                <div className="btn-link">
+                    {" "}
+                    <Link href='/contact' target="_blank" rel='noreferrer'>
+                      <a>Get Quote <i className="ti-arrow-top-right" />{" "}</a> 
+                    </Link>{" "}
+                    <span className="btn-block color1 animation-bounce" />{" "}
+                  </div>
+                </div>
             </div>
           </div>
         </div>

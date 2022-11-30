@@ -104,8 +104,8 @@ const Contact = () => {
               </div>
             </div>
             {/* Form elements */}
-            <div className="row border">
-              <div className="col-md-12 form-group">
+            <div className="row ">
+              <div className="col-md-12 form-group border">
                 <input
                 {...register("name", {required: true})}
                   name="name"
@@ -114,7 +114,7 @@ const Contact = () => {
                   required=""
                 />
               </div>
-              <div className="col-md-6 form-group">
+              <div className="col-md-6 form-group border">
                 <input
                 {...register("email", {required: true})}
                   name="email"
@@ -123,7 +123,7 @@ const Contact = () => {
                   required=""
                 />
               </div>
-              <div className="col-md-6 form-group">
+              <div className="col-md-6 form-group border">
                 <input
                 {...register("phone", {required: true})}
                   name="phone"
@@ -132,7 +132,7 @@ const Contact = () => {
                   required=""
                 />
               </div>
-              <div className="col-md-12 form-group">
+              <div className="col-md-12 form-group border">
                 <input
                 {...register("subject", {required: true})}
                   name="subject"
@@ -141,7 +141,7 @@ const Contact = () => {
                   required=""
                 />
               </div>
-              <div className="col-md-12 form-group">
+              <div className="col-md-12 form-group border">
                 <textarea
                 {...register("message", {required: true})}
                   name="message"
