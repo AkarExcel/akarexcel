@@ -11,7 +11,6 @@ const Services = ({services}) => {
 <>
 <Head>
   <title>Services</title>
-
 </Head>
 <Navbar/>
 <section className="services section-padding">
