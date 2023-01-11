@@ -17,15 +17,14 @@ const About = () => {
             I Create Digital Future.
           </h1>
           <p className="mt-45 wow fadeInUp" data-wow-delay=".3s">
-            Nulla posuere tortor sed semper scelerisque. Etiam ornare iros
-            metusan the gravidane sodales vel. Integer ac molestie nisi. Orci
-            varius natoque penatis magnis the duru parturient montes, nascetur
-            ridiculus mus.
+          I am a technically driven and creative problem solver. 
+          I love learning new technologies and working with cutting edge frameworks 
+          and tools to execute on various projects.
           </p>
           <p className="wow fadeInUp" data-wow-delay=".6s">
-            Fusce posuere quis sem quis efficitur. Etiam ac cursus lacus a
-            retium arus crase eratodio congue a nulla quis iaculis laoreet
-            risus.
+          I enjoy working in Analytics and Intelligence for a business, 
+          but also have a passion for being able to use the latest technologies, both software and hardware, 
+          to deliver solutions that meet the needs of clients wherever they are today and into the future.
           </p>
           <div
             className="btn-wrap wow fadeInUp text-left mt-45 mb-45"
@@ -68,21 +67,21 @@ const About = () => {
                 <h4>Experience</h4>
                 <div className="item">
                   <h5>
-                    HMM Space Inc.<span>2022 - Present</span>
+                    DecentitService<span>2021 - Present</span>
                   </h5>
-                  <p>UI/UX Designer</p>
+                  <p>Blockchain Developer</p>
                 </div>
                 <div className="item">
                   <h5>
-                    Robinhood Inc. <span>2018 - 2022</span>
+                    Freelancer Web Developer<span>2017 - 2021</span>
                   </h5>
                   <p>Web Developer</p>
                 </div>
                 <div className="item">
                   <h5>
-                    Bauen Software Inc. <span>2016 - 2018</span>
+                    Freelance Designer <span>2016 - 2017</span>
                   </h5>
-                  <p>Senior Developer</p>
+                  <p>Graphic & UI/UX Designer</p>
                 </div>
               </div>
             </div>
@@ -95,19 +94,19 @@ const About = () => {
                 <h4>Education</h4>
                 <div className="item">
                   <h5>
-                    Stanford University <span>2013 - 2015</span>
+                    Petroleum Training Institute <span>2015 - 2021</span>
                   </h5>
-                  <p>of California.</p>
+                  <p>NGN.</p>
                 </div>
                 <div className="item">
                   <h5>
-                    Specialization Course. <span>2011 - 2013</span>
+                    BuildSpace <span>2020 - 2022</span>
                   </h5>
-                  <p>MIT University</p>
+                  <p>BuildSpace.so</p>
                 </div>
                 <div className="item">
                   <h5>
-                    Level High School. <span>2009 - 2011</span>
+                    FreeCodeCamp <span>2017 - 2018</span>
                   </h5>
                   <p>San Fransisco</p>
                 </div>

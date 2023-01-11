@@ -87,6 +87,7 @@ export async function getServerSideProps(){
   return{
     props: {
       posts,services,portfolio,testimonial
-    }
+    },
+    revalidate: 320
   }
 } 
