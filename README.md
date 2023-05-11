@@ -10,7 +10,7 @@ and c#
 Currently spend my free time Working on my mobile Game 
 
 🔖 Resources
-Subscribe to my blog about Web3, Tech new, Tech How-to 👉 https://akarexcel.vercel.app/
+Subscribe to my blog about Web3, Tech new, Tech How-to 👉 https://akarexcel.com.ng/
 ![cover Image](./cover-image.png)
 Follow me on Twitter [Twitter](https://twitter.com/_Akar_Excel)
 
