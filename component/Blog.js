@@ -22,9 +22,9 @@ const Blog = ({posts}) => {
         <div key={post._id} className="row mb-30">
         <div className="col-md-6">
           <div className="img left">
-            <a href="post.html">
+            <Link href={`/post/${post.slug.current}`}>
               <img src={urlFor(post.mainImage).url()} alt="" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="col-md-6 valign">
@@ -84,9 +84,9 @@ const Blog = ({posts}) => {
         </div>
         <div className="col-lg-6 order1">
           <div className="img left">
-            <a href="post.html">
+            <Link href={`/post/${post.slug.current}`}>
             <img src={urlFor(post.mainImage).url()} alt="" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

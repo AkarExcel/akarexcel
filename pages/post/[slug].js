@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Navbar from '../../layout/Navbar'
-import PortableText from "react-portable-text"
+import {PortableText} from '@portabletext/react'
 import {useForm, SubmitHandler} from "react-hook-form"
 import { sanityClient, urlFor } from '../../sanity'
-import BlockContent from '@sanity/block-content-to-react'
+import Highlight from 'react-highlight'
+import Head from 'next/head'
+import 'highlight.js/styles/dracula.css';
+import Link from 'next/link'
+// import BlockContent from '@sanity/block-content-to-react'
 
 const Post = ({post}) => {
     const [submited, setSubmitted] = useState(false)
@@ -26,21 +30,106 @@ const Post = ({post}) => {
             console.log(err)
         ))
     )
-
+        
+    const myPortableTextComponents = {
+      types: {
+        code: ({value}) => 
+        <Highlight language="javascript" className='language-javascript' >
+        {value.code}
+      </Highlight>,
+        table: ({value}) => {
+          return (
+            <div>
+              hi
+            {value.rows[0].cells.map(cell => {
+              {console.log(cell)}
+              <h1>{cell}hi</h1>
+            })}
+            hi
+            </div>
+            
+            // <h1>
+            //   {console.log(value.rows[0].cells[1])}
+            //   {value.rows[0].cells[1]}
+            //   .
+            // </h1>
+        //   <table class="table-auto border-2 my-4 text-center">
+        //     <thead class="bg-white ">
+        //         <tr class="p-2">
+        //           {
+        //             value.rows[0].cells.map(cell => {
+        //               {console.log(cell)}
+        //               <th class="p-2">{cell}</th>
+        //             })
+        //           }
+        //        </tr>
+        //   </thead>
+        //   <tbody>
+        //         {value.rows.map((row, i) => {
+        //           console.log(i)
+        //           if(1 !== 0){
+        //             <tr>       
+        //               {row.cells?.map(cell => {
+        //                 <td class="p-2">{cell}</td>
+        //               })}
+        //           </tr> 
+        //           }
+        //         })}
+        //   </tbody>
+        // </table>
+          )
+        }
+      },
+      block: {
+        h1: (props) => (
+          <h1 className='text-3xl font-bold my-5' {...props} />
+          ),
+        h2: (props) => (
+            <h2 className='text-xl font-bold my-5' {...props} />
+            ),
+        li: ({children}) => (
+            <li className='ml-8 list-disc' >
+                {children}
+            </li>
+        ),
+        blockquote: ({children}) => (
+            <blockquote className='mx-4 italic font-thin text-slate-400 my-5 blockquote'>{children}</blockquote>
+        )
+        ,
+        link: ({href,children}) => (
+            <a href={href} className="text-blue-500 hover:underline">
+                {children}
+            </a>
+        )
+      },
+      marks: {
+        link: ({children, value}) => {
+          const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
+          return (
+            <a href={value.href} rel={rel}>
+              {children}
+            </a>
+          )
+        },
+      },
+    }
 
   return (
 <>
+<Head>
+    <title>{post?.title}</title>
+</Head>
 <Navbar/>
 <section className="section-padding post-page">
   <div className="container">
     <div className="row mb-45">
       <div className="col-md-12">
         <div className="blog-post-categorydate-wrapper">
-          <a href="blog.html">
+          <Link href="/blog">
             <div>Blog</div>
-          </a>
+          </Link>
           <div className="blog-post-categorydate-divider" />
-          <div>{new Date(post.publishedAt).toDateString()}</div>
+          <div>{new Date(post?.publishedAt).toDateString()}</div>
         </div>
         <h1>{post.title}</h1>
       </div>
@@ -48,14 +137,14 @@ const Post = ({post}) => {
     <div className="row">
       <div className="col-md-12">
         {" "}
-        <img src={urlFor(post.mainImage).url()} className="mb-30 img-fluid" alt="" />
+        <img src={urlFor(post?.mainImage).url()} className="mb-30 img-fluid" alt="" />
         {post.body ?
           <PortableText  
           className=''
-          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-          content={post.body}
-          serializers = {{
+          value={post.body}
+          // components={}
+          components={myPortableTextComponents}
+          serializer = {{
               h1: (props) => (
                   <h1 className='text-3xl font-bold my-5' {...props} />
                   ),
@@ -78,12 +167,13 @@ const Post = ({post}) => {
               )
           }}
           />
-          :                
-          <BlockContent
-          blocks={post.body}
-          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-          /> 
+          :       
+          ""         
+          // <BlockContent
+          // blocks={post.body}
+          // projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+          // dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+          // /> 
   }
 
 
@@ -296,6 +386,6 @@ const moreQuery = `*[_type == "post" && slug.current != $slug] | order(published
         props: {
             post,morePost
         },
-        revalidate: 3600,
+        revalidate: 60,
     }
 }

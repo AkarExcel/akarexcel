@@ -1,5 +1,6 @@
 @import url("css/plugins.css");
 @import url("css/style.css");
+@import url('/node_modules/highlight.js/styles/github.css');
 
 .toast-message {
     background: rgb(236, 236, 236);
