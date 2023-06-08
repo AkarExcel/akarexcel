@@ -1,4 +1,4 @@
-import react,{useEffect} from "react"
+import react,{useEffect,useState} from "react"
 import Aos from "aos"
 import Blog from "../component/Blog"
 import Client from "../component/Client"
@@ -9,15 +9,32 @@ import Skills from "../component/Skills"
 import Testimonial from "../component/Testimonial"
 import Navbar from "../layout/Navbar"
 import { sanityClient } from "../sanity"
+import PopBanner from "../component/popbanner/PopBanner"
+import is from "sharp/lib/is"
 
 export default function Home({posts,services, portfolio, testimonial}) {
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     Aos.init({duration:800, once: true, easing: "ease-in-quart"})
   },[])
 
+  useEffect(() => {
+if(isOpen){
+  document.body.style.overflow = 'hidden'
+  document.body.classList.add('touch-action')
+}else
+{
+  document.body.style.overflow = 'scroll'
+  document.body.classList.remove('touch-action')
+
+}
+  },[isOpen])
+
   return (
     <>
+  {isOpen && <PopBanner setIsOpen={setIsOpen} isOpen={isOpen} />}
+
   <Navbar />
   <Hero/>
   <div data-aos="fade-up"><Services services={services} /></div>
@@ -31,6 +48,7 @@ export default function Home({posts,services, portfolio, testimonial}) {
   <Testimonial testimonial={testimonial}/>
   {/* Clients */}
   <Client/>
+
 </>
 
   )

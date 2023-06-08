@@ -32,5 +32,7 @@
     -webkit-box-orient: vertical;
  }
 
- .bg-color{
- }
+.touch-action{
+    touch-action: none;
+    -ms-touch-action: none;
+}
